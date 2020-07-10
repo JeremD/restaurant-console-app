@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import static java.util.stream.Collectors.toList;
 
+@Repository
 @ComponentScan("dev")
 public class PlatDaoFichier implements IPlatDao {
 

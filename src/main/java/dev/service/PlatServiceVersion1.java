@@ -6,6 +6,13 @@ import dev.exception.PlatException;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+@Service
+@ComponentScan("dev")
 public class PlatServiceVersion1 implements IPlatService {
 
     private IPlatDao dao;

@@ -5,6 +5,12 @@ import dev.entite.Plat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@ComponentScan("dev")
 public class PlatDaoMemoire implements IPlatDao {
 
     private List<Plat> listePlats = new ArrayList<>();

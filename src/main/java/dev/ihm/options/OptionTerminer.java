@@ -10,6 +10,6 @@ public class OptionTerminer implements IOptionMenu {
 
     @Override
     public void executer() {
-        throw new PlatException("Aurevoir");
+        throw new PlatException("Au revoir");
     }
 }

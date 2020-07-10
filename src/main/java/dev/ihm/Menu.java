@@ -13,11 +13,19 @@ import java.util.Scanner;
 
 public class Menu {
 
+    /** actions */
     private Map<Integer, IOptionMenu> actions = new HashMap<>();
 
+    /** menu */
     private String menu;
+    
+    /** scanner */
     private Scanner scanner;
 
+    /** Constructor
+     * @param scanner
+     * @param service
+     */
     public Menu(Scanner scanner, IPlatService service) {
         actions.put(1, new OptionListerPlats(service));
         actions.put(2, new OptionAjouterPlat(scanner, service));
@@ -25,14 +33,15 @@ public class Menu {
         this.scanner = scanner;
     }
 
+    /**
+     * Affichage du menu
+     * 
+     */
     public void afficher() {
-
         boolean continuer = true;
 
         while (continuer) {
-
             System.out.println(getMenuTexte());
-
             int choix = this.scanner.nextInt();
 
             try {
@@ -44,6 +53,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Texte du menu
+     * 
+     * @return
+     */
     private String getMenuTexte() {
         if (menu == null) {
             StringBuilder sb = new StringBuilder();

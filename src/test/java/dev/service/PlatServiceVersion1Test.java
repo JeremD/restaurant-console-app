@@ -34,7 +34,7 @@ public class PlatServiceVersion1Test {
 	}
 
 	@Test
-	void ajouterPlatNomPrixInvalide() {
+	void ajouterPlatValide() {
 		platService.ajouterPlat("LasagneThon", 2400);
 		verify(dao).ajouterPlat("LasagneThon", 2400);
 	}

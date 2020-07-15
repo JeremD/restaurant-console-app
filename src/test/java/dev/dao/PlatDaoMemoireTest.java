@@ -26,8 +26,8 @@ class PlatDaoMemoireTest {
 
 	@Test
 	void ajouterPlatCasPassants() {
-		List<Plat> resultat = platDaoMemoire.listerPlats();
 		platDaoMemoire.ajouterPlat("pizzaReine", 1400);
+		List<Plat> resultat = platDaoMemoire.listerPlats();
 		assertThat(resultat);
 	}
 }

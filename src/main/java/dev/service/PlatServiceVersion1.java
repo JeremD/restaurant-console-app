@@ -9,8 +9,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+@Service
+@Profile("serviceV1")
 @ComponentScan("dev")
 public class PlatServiceVersion1 implements IPlatService {
 
@@ -29,7 +32,6 @@ public class PlatServiceVersion1 implements IPlatService {
     public void ajouterPlat(String nomPlat, Integer prixPlat) {
 
         // règle métier
-
         if (nomPlat.length() <= 3) {
             throw new PlatException("un plat doit avoir un nom de plus de 3 caractères");
         }

@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Profile("memoire")
 @ComponentScan("dev")
 public class PlatDaoMemoire implements IPlatDao {
 

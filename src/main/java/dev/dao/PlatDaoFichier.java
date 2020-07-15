@@ -10,18 +10,25 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import static java.util.stream.Collectors.toList;
 
 @Repository
+@Profile("fichier")
 @ComponentScan("dev")
 public class PlatDaoFichier implements IPlatDao {
 
+    /** fichierStockage */
     private String fichierStockage;
 
-    public PlatDaoFichier(String fichierStockage) {
+    /** Constructor
+     * @param fichierStockage
+     */
+    public PlatDaoFichier(@Value("${fichierStockage}") String fichierStockage) {
         this.fichierStockage = fichierStockage;
         if (!Files.exists(Paths.get(this.fichierStockage))) {
             try {
@@ -32,6 +39,9 @@ public class PlatDaoFichier implements IPlatDao {
         }
     }
 
+    /**
+     * Lister les plats
+     */
     @Override
     public List<Plat> listerPlats() {
         try {
@@ -46,6 +56,9 @@ public class PlatDaoFichier implements IPlatDao {
         }
     }
 
+    /**
+     * Ajouter un plat
+     */
     @Override
     public void ajouterPlat(String nomPlat, Integer prixPlat) {
 

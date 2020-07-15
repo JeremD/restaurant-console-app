@@ -11,7 +11,7 @@ import dev.dao.IPlatDao;
 import dev.exception.PlatException;
 
 public class PlatServiceVersion1Test {
-	
+
 	private IPlatDao dao;
 	private PlatServiceVersion1 platService;
 
@@ -20,22 +20,20 @@ public class PlatServiceVersion1Test {
 		dao = mock(IPlatDao.class);
 		platService = new PlatServiceVersion1(dao);
 	}
-	
+
 	@Test
 	void ajouterPlatNomInvalide() {
-		
-		assertThatThrownBy(() -> platService.ajouterPlat("piz", 1400))
-			.isInstanceOf(PlatException.class)
-			.hasMessage("un plat doit avoir un nom de plus de 3 caractères");		
+
+		assertThatThrownBy(() -> platService.ajouterPlat("piz", 1400)).isInstanceOf(PlatException.class)
+				.hasMessage("un plat doit avoir un nom de plus de 3 caractères");
 	}
-	
+
 	@Test
 	void ajouterPlatPrixInvalide() {
-		assertThatThrownBy(() -> platService.ajouterPlat("pizzaJambon", 40))
-		.isInstanceOf(PlatException.class)
-		.hasMessage("le prix d'un plat doit être supérieur à 5 €");
+		assertThatThrownBy(() -> platService.ajouterPlat("pizzaJambon", 40)).isInstanceOf(PlatException.class)
+				.hasMessage("le prix d'un plat doit être supérieur à 5 €");
 	}
-	
+
 	@Test
 	void ajouterPlatNomPrixInvalide() {
 		platService.ajouterPlat("LasagneThon", 2400);

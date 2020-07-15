@@ -29,6 +29,7 @@ public class PlatServiceVersion2IntegrationTest {
 
 		List<Plat> resultat = service.listerPlats();
 		assertThat(resultat).extracting(Plat::getNom).contains(ajoutPlat.getNom());
+		assertThat(resultat).extracting(Plat::getPrixEnCentimesEuros).contains(ajoutPlat.getPrixEnCentimesEuros());
 	}
 
 	@Test

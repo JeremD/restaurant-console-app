@@ -23,7 +23,6 @@ public class PlatServiceVersion1Test {
 
 	@Test
 	void ajouterPlatNomInvalide() {
-
 		assertThatThrownBy(() -> platService.ajouterPlat("piz", 1400)).isInstanceOf(PlatException.class)
 				.hasMessage("un plat doit avoir un nom de plus de 3 caractères");
 	}

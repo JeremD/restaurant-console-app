@@ -23,12 +23,12 @@ public class PlatDaoJdbc implements IPlatDao {
 	
 	@Override
 	public List<Plat> listerPlats() {
-		return jdbcTemplate.queryForList("select * from plat", Plat.class);
+		return jdbcTemplate.query("select * from plat", new PlatRowMapper());
 	}
 
 	@Override
 	public void ajouterPlat(String nomPlat, Integer prixPlat) {
-
+		jdbcTemplate.update("insert into plat (nom, prix) values (?, ?)", nomPlat, prixPlat);	
 	}
 
 }

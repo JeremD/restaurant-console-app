@@ -2,9 +2,26 @@ package dev.entite;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "plat")
 public class Plat {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
+	
+	@Column(name = "nom")
     private String nom;
+    
+	@Column(name = "prix")
     private Integer prixEnCentimesEuros;
 
     public Plat() {
@@ -15,6 +32,20 @@ public class Plat {
         this.prixEnCentimesEuros = prixEnCentimesEuros;
     }
 
+    /** Getter
+	 * @return id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/** Setter
+	 * @param id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+    
     public String getNom() {
         return nom;
     }

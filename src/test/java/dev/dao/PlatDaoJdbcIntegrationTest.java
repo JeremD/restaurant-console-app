@@ -13,27 +13,27 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import dev.config.JdbcTestConfig;
 import dev.entite.Plat;
 
-@SpringJUnitConfig(classes = {JdbcTestConfig.class, PlatDaoJdbc.class})
+@SpringJUnitConfig(classes = { JdbcTestConfig.class, PlatDaoJdbc.class })
 @TestPropertySource("classpath:test.properties")
 public class PlatDaoJdbcIntegrationTest {
-	
+
 	@Autowired
 	private PlatDaoJdbc daoJdbc;
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	@Test
 	void listerPlatsNonVide() {
 		List<Plat> resultat = daoJdbc.listerPlats();
 		assertThat(resultat).isNotEmpty();
 	}
-	
+
 	@Test
 	void ajouterPlatCasPassant() {
 		daoJdbc.ajouterPlat("Lasagne Epinards", 2200);
-		List<Plat> resultat = jdbcTemplate.query("select * from plat where nom = 'Lasagne Epinards'", new PlatRowMapper());
+		List<Plat> resultat = jdbcTemplate.query("select * from plat where nom = ? and prix = ?",
+				new Object[] { "Lasagne Epinards", 2200 }, new PlatRowMapper());
 		assertThat(resultat).isNotEmpty();
 	}
 }
-

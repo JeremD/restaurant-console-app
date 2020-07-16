@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
@@ -17,19 +18,22 @@ import dev.entite.Plat;
 public class PlatDaoJdbcIntegrationTest {
 	
 	@Autowired
-	private PlatDaoJdbc platDaoJdbc;
+	private PlatDaoJdbc daoJdbc;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	@Test
 	void listerPlatsNonVide() {
-		List<Plat> resultat = platDaoJdbc.listerPlats();
-		assertThat(resultat).size();
+		List<Plat> resultat = daoJdbc.listerPlats();
+		assertThat(resultat).isNotEmpty();
 	}
 	
 	@Test
 	void ajouterPlatCasPassant() {
-		platDaoJdbc.ajouterPlat("Lasagne Epinards", 2200);
-		List<Plat> resultat = platDaoJdbc.listerPlats();
-		
+		daoJdbc.ajouterPlat("Lasagne Epinards", 2200);
+		List<Plat> resultat = jdbcTemplate.query("select * from plat where nom = 'Lasagne Epinards'", new PlatRowMapper());
+		assertThat(resultat).isNotEmpty();
 	}
 }
 

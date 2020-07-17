@@ -27,7 +27,7 @@ public class PlatDaoJpaIntegrationTest {
 	}
 	
 	@Test
-	void ajouterPlat() {
+	void ajouterPlatCasPassant() {
 		Plat ajoutPlat = new Plat("TarteTatin", 900);
 		daoJpa.ajouterPlat(ajoutPlat.getNom(), ajoutPlat.getPrixEnCentimesEuros());
 		
